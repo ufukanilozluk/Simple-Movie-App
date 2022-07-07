@@ -10,15 +10,15 @@ import Foundation
 import UIKit
 
 class AnasayfaVModel: MainVModel {
-    var delegate: AnasayfaVModelDelegate? // Delegator Class
+    var delegate: AnasayfaVModelDelegate?
     let selfView: UIView
 
     init(view: UIView) {
         selfView = view
     }
 
-    func getCategories(url: String) {
-        var data: [Kategori] = []
+    func getUpcomingMovies(url: String) {
+        var data: [Movie] = []
 
         startLoader(uiView: selfView)
         Alamofire.request(url, method: .get, encoding: URLEncoding.default).responseJSON { response in
@@ -26,12 +26,14 @@ class AnasayfaVModel: MainVModel {
             switch response.result {
             case let .success(JSON):
 
-                if let response = JSON as? [[String: Any]] {
-                    for el in response {
-                        data.append(Kategori(json: el))
+                if let response = JSON as? [String: Any] {
+                    if let response = response["results"] as? [[String: Any]]{
+                        for el in response {
+                            data.append(Movie(json: el))
+                        }
+                        self.delegate?.getUpcomingMoviesCompleted(data: data)
                     }
-                    self.delegate?.getCategoryCompleted(data: data)
-
+                    
                 } else {
                     print("Cast olamadı")
                 }

@@ -1,49 +1,23 @@
-//
-//  Hava.swift
-//  IosCase
-//
-//  Created by Ufuk Anıl Özlük on 4.12.2020.
-//
 
 import Foundation
 
-struct Slider: Codable {
-    var picture: String?
-    
+struct Movie: Codable {
+    var id : Int
+    var original_title: String
+    var overview: String
+    var release_date: String
+    var poster_path: String?
+    var vote_average: Double
+    var vote_count: Int
 
     init(json: [String: Any]) {
-        picture = json["picture"] as? String ?? ""
+        id = json["id"] as? Int ?? 0
+        original_title = json["original_title"] as? String ?? ""
+        overview = json["overview"] as? String ?? ""
+        release_date = json["release_date"] as? String ?? ""
+        poster_path = json["poster_path"] as? String ?? ""
+        vote_average = json["vote_average"] as? Double ?? 0.0
+        vote_count = json["vote_count"] as? Int ?? 0
        
     }
 }
-
-struct Kategori: Codable {
-    var title: String?
-    var picture: String?
-
-    init(json: [String: Any]) {
-        picture = json["picture"] as? String ?? ""
-        title = json["title"] as? String ?? ""
-    }
-}
-
-struct CokSatan: Codable {
-    var title: String?
-    var picture: String?
-
-    init(json: [String: Any]) {
-        picture = json["picture"] as? String ?? ""
-        title = json["title"] as? String ?? ""
-    }
-}
-
-
-struct Markalar: Codable {
-    
-    var picture: String?
-
-    init(json: [String: Any]) {
-        picture = json["picture"] as? String ?? ""
-    }
-}
-

@@ -17,17 +17,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="brU-VD-Byp">
-                                <rect key="frame" x="0.0" y="88" width="390" height="200"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CY2-XC-vmW" customClass="ImageSlideshow" customModule="ImageSlideshow">
+                                <rect key="frame" x="0.0" y="0.0" width="390" height="200"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="200" id="6Gj-9H-rOC"/>
+                                    <constraint firstAttribute="height" constant="200" id="bAB-fR-WuZ"/>
                                 </constraints>
-                            </imageView>
+                            </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="ABR-6Z-58i">
                                 <rect key="frame" x="10" y="308" width="370" height="492"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" rowHeight="123" id="XVa-qO-VKg">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" rowHeight="123" id="XVa-qO-VKg" customClass="MovieTVCell" customModule="IosCase" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="44.666666030883789" width="370" height="123"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="XVa-qO-VKg" id="EmR-sG-8Ef">
@@ -37,13 +38,14 @@
                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="xjk-9c-7cc">
                                                     <rect key="frame" x="10" y="10" width="321.33333333333331" height="103"/>
                                                     <subviews>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hbO-Z2-XuI">
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZxX-Fm-O4g" customClass="ImageSlideshow" customModule="ImageSlideshow">
                                                             <rect key="frame" x="0.0" y="0.0" width="100" height="103"/>
+                                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="width" constant="100" id="eKo-w1-cs8"/>
-                                                                <constraint firstAttribute="height" constant="100" id="rIE-E2-SHS"/>
+                                                                <constraint firstAttribute="height" constant="200" id="e4n-uu-2jA"/>
+                                                                <constraint firstAttribute="width" constant="100" id="va5-Ig-ID5"/>
                                                             </constraints>
-                                                        </imageView>
+                                                        </view>
                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="JfW-A9-SOt">
                                                             <rect key="frame" x="110.00000000000001" y="0.0" width="211.33333333333337" height="103"/>
                                                             <subviews>
@@ -77,6 +79,12 @@
                                                 <constraint firstAttribute="bottom" secondItem="xjk-9c-7cc" secondAttribute="bottom" constant="10" id="upX-YP-RIS"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="movieImageView" destination="ZxX-Fm-O4g" id="nxu-q3-Jd3"/>
+                                            <outlet property="overviewLabel" destination="cSq-GE-Pw5" id="MTJ-QP-JqR"/>
+                                            <outlet property="releaseDateLabel" destination="EMG-Ay-rLJ" id="PrL-Kl-OAT"/>
+                                            <outlet property="titleLabel" destination="enc-bd-wpj" id="irf-01-Uqg"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -84,17 +92,19 @@
                         <viewLayoutGuide key="safeArea" id="HLv-Lg-ceZ"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="brU-VD-Byp" firstAttribute="leading" secondItem="HLv-Lg-ceZ" secondAttribute="leading" id="25p-1u-hL4"/>
-                            <constraint firstItem="brU-VD-Byp" firstAttribute="top" secondItem="HLv-Lg-ceZ" secondAttribute="top" id="2VC-gf-kWG"/>
+                            <constraint firstItem="HLv-Lg-ceZ" firstAttribute="trailing" secondItem="CY2-XC-vmW" secondAttribute="trailing" id="LUw-H6-5ds"/>
+                            <constraint firstItem="ABR-6Z-58i" firstAttribute="top" secondItem="CY2-XC-vmW" secondAttribute="bottom" constant="108" id="WGn-MM-m4W"/>
+                            <constraint firstItem="CY2-XC-vmW" firstAttribute="top" secondItem="lN3-6E-wr3" secondAttribute="top" id="bVr-Ll-Kt5"/>
                             <constraint firstItem="HLv-Lg-ceZ" firstAttribute="bottom" secondItem="ABR-6Z-58i" secondAttribute="bottom" constant="10" id="ijI-wL-kdV"/>
                             <constraint firstItem="HLv-Lg-ceZ" firstAttribute="trailing" secondItem="ABR-6Z-58i" secondAttribute="trailing" constant="10" id="iyG-4w-bQD"/>
+                            <constraint firstItem="CY2-XC-vmW" firstAttribute="leading" secondItem="HLv-Lg-ceZ" secondAttribute="leading" id="nYI-bL-crJ"/>
                             <constraint firstItem="ABR-6Z-58i" firstAttribute="leading" secondItem="HLv-Lg-ceZ" secondAttribute="leading" constant="10" id="qZn-eR-sck"/>
-                            <constraint firstItem="HLv-Lg-ceZ" firstAttribute="trailing" secondItem="brU-VD-Byp" secondAttribute="trailing" id="sc0-Tt-Mok"/>
-                            <constraint firstItem="ABR-6Z-58i" firstAttribute="top" secondItem="brU-VD-Byp" secondAttribute="bottom" constant="20" id="tHM-49-kc1"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="T3Y-9p-llo"/>
                     <connections>
+                        <outlet property="moviesTableView" destination="ABR-6Z-58i" id="ko5-xm-zZ6"/>
+                        <outlet property="sliderImageView" destination="CY2-XC-vmW" id="Nw2-nl-pR0"/>
                         <segue destination="t2Z-3J-mJ1" kind="show" id="sVy-LU-RY5"/>
                     </connections>
                 </viewController>
@@ -102,20 +112,21 @@
             </objects>
             <point key="canvasLocation" x="1129.2307692307693" y="-267.29857819905214"/>
         </scene>
-        <!--Kampanya-->
+        <!--DetayV Controller-->
         <scene sceneID="dym-em-sh5">
             <objects>
-                <viewController id="t2Z-3J-mJ1" customClass="KampanyalarVController" customModule="IosCase" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="t2Z-3J-mJ1" customClass="DetayVController" customModule="IosCase" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="SK3-fd-aiF">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Hmz-Ya-Uy2">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xv4-3i-TL4" customClass="ImageSlideshow" customModule="ImageSlideshow">
                                 <rect key="frame" x="0.0" y="88" width="390" height="200"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="200" id="6tj-YA-8eV"/>
+                                    <constraint firstAttribute="height" constant="200" id="Seh-Ng-1if"/>
                                 </constraints>
-                            </imageView>
+                            </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="t4e-8w-iI9">
                                 <rect key="frame" x="10" y="308" width="370" height="492"/>
                                 <subviews>
@@ -156,17 +167,22 @@
                         <viewLayoutGuide key="safeArea" id="DZr-kP-x4T"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="DZr-kP-x4T" firstAttribute="trailing" secondItem="Hmz-Ya-Uy2" secondAttribute="trailing" id="B9M-gp-6El"/>
-                            <constraint firstItem="Hmz-Ya-Uy2" firstAttribute="top" secondItem="DZr-kP-x4T" secondAttribute="top" id="Nhl-tw-d1Q"/>
-                            <constraint firstItem="Hmz-Ya-Uy2" firstAttribute="leading" secondItem="DZr-kP-x4T" secondAttribute="leading" id="Sbe-qm-eiB"/>
-                            <constraint firstItem="t4e-8w-iI9" firstAttribute="top" secondItem="Hmz-Ya-Uy2" secondAttribute="bottom" constant="20" id="Ych-wp-ms9"/>
+                            <constraint firstItem="t4e-8w-iI9" firstAttribute="top" secondItem="xv4-3i-TL4" secondAttribute="bottom" constant="20" id="DYp-c2-m1z"/>
+                            <constraint firstItem="xv4-3i-TL4" firstAttribute="leading" secondItem="DZr-kP-x4T" secondAttribute="leading" id="RKf-4h-I9o"/>
+                            <constraint firstItem="DZr-kP-x4T" firstAttribute="trailing" secondItem="xv4-3i-TL4" secondAttribute="trailing" id="Rxo-Aj-b0k"/>
                             <constraint firstItem="t4e-8w-iI9" firstAttribute="leading" secondItem="SK3-fd-aiF" secondAttribute="leading" constant="10" id="bd7-x9-n3c"/>
                             <constraint firstAttribute="trailing" secondItem="t4e-8w-iI9" secondAttribute="trailing" constant="10" id="cw8-Oc-cg1"/>
+                            <constraint firstItem="xv4-3i-TL4" firstAttribute="top" secondItem="DZr-kP-x4T" secondAttribute="top" id="l0C-Gq-Bfv"/>
                             <constraint firstItem="DZr-kP-x4T" firstAttribute="bottom" secondItem="t4e-8w-iI9" secondAttribute="bottom" constant="10" id="oAB-qD-8te"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Kampanya" image="kampanya" id="KIp-wI-Dcv"/>
                     <navigationItem key="navigationItem" id="CHa-YM-MtO"/>
+                    <connections>
+                        <outlet property="dateLabel" destination="bs8-o6-5Pa" id="0Y6-9g-9LZ"/>
+                        <outlet property="movieDetailTextView" destination="cNE-t2-KNO" id="XbO-Oa-5op"/>
+                        <outlet property="movieThumbnailImageView" destination="xv4-3i-TL4" id="Kos-gw-l19"/>
+                        <outlet property="rateLabel" destination="DO9-k8-WlM" id="5BQ-eq-Ngo"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="l6f-0S-qkJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -195,7 +211,6 @@
     <resources>
         <image name="anasayfa" width="28" height="23"/>
         <image name="imdb" width="49" height="24"/>
-        <image name="kampanya" width="29" height="23"/>
         <image name="rate" width="16" height="16"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

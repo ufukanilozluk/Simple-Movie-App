@@ -8,8 +8,6 @@
 import Foundation
 
 protocol AnasayfaVModelDelegate: MainVModelDelegate {
-    func getCategoryCompleted(data:[Kategori])
-    func getCoksatanCompleted(data:[CokSatan])
-    func getSliderCompleted(data:[Slider])
-    func getMarkalarCompleted(data:[Markalar])
+    func getUpcomingMoviesCompleted(data:[Movie])
+    func getSliderCompleted(data:[Movie])
 }
