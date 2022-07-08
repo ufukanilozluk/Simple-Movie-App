@@ -28,7 +28,7 @@
                                 <rect key="frame" x="10" y="308" width="370" height="492"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" rowHeight="123" id="XVa-qO-VKg" customClass="MovieTVCell" customModule="IosCase" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="MoviesCell" rowHeight="123" id="XVa-qO-VKg" customClass="MovieTVCell" customModule="IosCase" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="44.666666030883789" width="370" height="123"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="XVa-qO-VKg" id="EmR-sG-8Ef">
@@ -105,7 +105,7 @@
                     <connections>
                         <outlet property="moviesTableView" destination="ABR-6Z-58i" id="ko5-xm-zZ6"/>
                         <outlet property="sliderImageView" destination="CY2-XC-vmW" id="Nw2-nl-pR0"/>
-                        <segue destination="t2Z-3J-mJ1" kind="show" id="sVy-LU-RY5"/>
+                        <segue destination="t2Z-3J-mJ1" kind="show" identifier="goToDetailSegue" id="sVy-LU-RY5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zua-lz-7FJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

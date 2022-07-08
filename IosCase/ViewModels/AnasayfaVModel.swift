@@ -27,64 +27,12 @@ class AnasayfaVModel: MainVModel {
             case let .success(JSON):
 
                 if let response = JSON as? [String: Any] {
-                    if let response = response["results"] as? [[String: Any]]{
+                    if let response = response["results"] as? [[String: Any]] {
                         for el in response {
                             data.append(Movie(json: el))
                         }
                         self.delegate?.getUpcomingMoviesCompleted(data: data)
                     }
-                    
-                } else {
-                    print("Cast olamadı")
-                }
-
-            case let .failure(error):
-                print(error.localizedDescription)
-            }
-            self.stopLoader(uiView: self.selfView)
-        }
-    }
-
-    func getCokSatan(url: String) {
-        var data: [CokSatan] = []
-
-        startLoader(uiView: selfView)
-        Alamofire.request(url, method: .get, encoding: URLEncoding.default).responseJSON { response in
-
-            switch response.result {
-            case let .success(JSON):
-
-                if let response = JSON as? [[String: Any]] {
-                    for el in response {
-                        data.append(CokSatan(json: el))
-                    }
-                    self.delegate?.getCoksatanCompleted(data: data)
-
-                } else {
-                    print("Cast olamadı")
-                }
-
-            case let .failure(error):
-                print(error.localizedDescription)
-            }
-            self.stopLoader(uiView: self.selfView)
-        }
-    }
-
-    func getMarkalar(url: String) {
-        var data: [Markalar] = []
-
-        startLoader(uiView: selfView)
-        Alamofire.request(url, method: .get, encoding: URLEncoding.default).responseJSON { response in
-
-            switch response.result {
-            case let .success(JSON):
-
-                if let response = JSON as? [[String: Any]] {
-                    for el in response {
-                        data.append(Markalar(json: el))
-                    }
-                    self.delegate?.getMarkalarCompleted(data: data)
 
                 } else {
                     print("Cast olamadı")
@@ -98,7 +46,7 @@ class AnasayfaVModel: MainVModel {
     }
 
     func getSliderPics(url: String) {
-        var data: [Slider] = []
+        var data: [Movie] = []
 
         startLoader(uiView: selfView)
         Alamofire.request(url, method: .get, encoding: URLEncoding.default).responseJSON { response in
@@ -106,12 +54,37 @@ class AnasayfaVModel: MainVModel {
             switch response.result {
             case let .success(JSON):
 
-                if let response = JSON as? [[String: Any]] {
-                    for el in response {
-                        data.append(Slider(json: el))
+                if let response = JSON as? [String: Any] {
+                    if let response = response["results"] as? [[String: Any]] {
+                        for el in response {
+                            data.append(Movie(json: el))
+                        }
+                        self.delegate?.getSliderCompleted(data: data)
                     }
-                    self.delegate?.getSliderCompleted(data: data)
 
+                } else {
+                    print("Cast olamadı")
+                }
+
+            case let .failure(error):
+                print(error.localizedDescription)
+            }
+            self.stopLoader(uiView: self.selfView)
+        }
+    }
+
+    func getMovieById(url: String) {
+        var data: Movie = Movie(json: [:])
+
+        startLoader(uiView: selfView)
+        Alamofire.request(url, method: .get, encoding: URLEncoding.default).responseJSON { response in
+
+            switch response.result {
+            case let .success(JSON):
+
+                if let response = JSON as? [String: Any] {
+                    data = Movie(json: response)
+                    self.delegate?.getMovieByIdCompleted(data: data)
                 } else {
                     print("Cast olamadı")
                 }

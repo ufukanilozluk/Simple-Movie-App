@@ -7,7 +7,8 @@
 
 import Foundation
 
-protocol AnasayfaVModelDelegate: MainVModelDelegate {
+protocol AnasayfaVModelDelegate{
     func getUpcomingMoviesCompleted(data:[Movie])
     func getSliderCompleted(data:[Movie])
+    func getMovieByIdCompleted(data:Movie)
 }
